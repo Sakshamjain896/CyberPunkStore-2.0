@@ -1,0 +1,222 @@
+/* === CSS RESET & BASE === */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  /* Cyberpunk Color Palette */
+  --primary: #00f2ff;        /* Cyan neon */
+  --secondary: #ff00ff;      /* Magenta neon */
+  --accent: #ffff00;         /* Yellow neon */
+  --success: #00ff41;        /* Green matrix */
+  --danger: #ff2a2a;         /* Danger red */
+  --warning: #ff9900;        /* Orange glow */
+  
+  /* Background Colors */
+  --bg: #020205;             /* Deep space black */
+  --bg-dark: #0a0a0f;        /* Deep space black */
+  --bg-darker: #050508;      /* Absolute darkness */
+  --bg-card: rgba(255, 255, 255, 0.02);
+  --glass: rgba(255, 255, 255, 0.03);
+  
+  /* Text Colors */
+  --text-primary: #ffffff;
+  --text-secondary: #b4b4d4;
+  --text-muted: #7a7a9a;
+  --text-cyber: var(--primary);
+  
+  /* Borders & Effects */
+  --border-cyber: 2px solid var(--primary);
+  --border-secondary: 2px solid var(--secondary);
+  --glow-primary: 0 0 20px var(--primary), 0 0 40px var(--primary);
+  --glow-secondary: 0 0 20px var(--secondary), 0 0 40px var(--secondary);
+  --glow-accent: 0 0 20px var(--accent);
+  
+  /* Spacing */
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 1.5rem;
+  --spacing-lg: 2rem;
+  --spacing-xl: 3rem;
+  
+  /* Transitions */
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.3s ease;
+  --transition-slow: 0.5s ease;
+  
+  /* Z-Index Layers */
+  --z-background: -1;
+  --z-base: 1;
+  --z-overlay: 10;
+  --z-modal: 100;
+  --z-tooltip: 1000;
+}
+
+/* === BODY & HTML === */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Space Grotesk', sans-serif;
+  background-color: var(--bg);
+  color: var(--text-primary);
+  line-height: 1.6;
+  overflow: hidden;
+  touch-action: none;
+  position: relative;
+  min-height: 100vh;
+  cursor: none !important; /* Hide default cursor for custom cursor */
+}
+
+body *, a, button, input, textarea, select {
+  cursor: none !important;
+}
+
+/* Fallback for mobile (show system cursor on touch devices) */
+@media (hover: none) {
+  body, body *, a, button, input, textarea, select {
+    cursor: auto !important;
+  }
+}
+
+#root {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+/* === SCROLLBAR STYLING === */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-darker);
+  border-left: 1px solid var(--primary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--primary), var(--secondary));
+  border-radius: 6px;
+  box-shadow: var(--glow-primary);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary);
+}
+
+/* === SELECTION === */
+::selection {
+  background: var(--primary);
+  color: var(--bg-dark);
+}
+
+::-moz-selection {
+  background: var(--primary);
+  color: var(--bg-dark);
+}
+
+/* === LINKS === */
+a {
+  color: var(--primary);
+  text-decoration: none;
+  transition: var(--transition-fast);
+}
+
+a:hover {
+  color: var(--secondary);
+  text-shadow: var(--glow-secondary);
+}
+
+/* === UTILITY CLASSES === */
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-md);
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-glow {
+  text-shadow: var(--glow-primary);
+}
+
+.text-cyber {
+  color: var(--primary);
+  font-family: 'Orbitron', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.text-mono {
+  font-family: 'Share Tech Mono', monospace;
+}
+
+.cyber-border {
+  border: var(--border-cyber);
+  position: relative;
+}
+
+.cyber-border::before,
+.cyber-border::after {
+  content: '';
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border: 2px solid var(--primary);
+}
+
+.cyber-border::before {
+  top: -2px;
+  left: -2px;
+  border-right: none;
+  border-bottom: none;
+}
+
+.cyber-border::after {
+  bottom: -2px;
+  right: -2px;
+  border-left: none;
+  border-top: none;
+}
+
+.glass-panel {
+  background: var(--bg-glass);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(0, 255, 255, 0.3);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+}
+
+.neon-glow {
+  box-shadow: var(--glow-primary);
+  animation: pulseGlow 2s ease-in-out infinite;
+}
+
+/* === GRID PATTERNS === */
+.cyber-grid-bg {
+  background-image: 
+    linear-gradient(rgba(0, 255, 255, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 255, 255, 0.1) 1px, transparent 1px);
+  background-size: 50px 50px;
+  background-position: center center;
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 768px) {
+  :root {
+    --spacing-sm: 0.75rem;
+    --spacing-md: 1rem;
+    --spacing-lg: 1.5rem;
+    --spacing-xl: 2rem;
+  }
+  
+  .container {
+    padding: 0 var(--spacing-sm);
+  }
+}

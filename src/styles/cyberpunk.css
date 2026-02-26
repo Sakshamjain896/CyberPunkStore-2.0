@@ -1,0 +1,203 @@
+:root {
+  --primary: #00f2ff;
+  --danger: #ff2a2a;
+  --bg: #020205;
+  --glass: rgba(255, 255, 255, 0.03);
+  --ui-scale: 1;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body,
+html {
+  width: 100%;
+  height: 100%;
+  background: var(--bg);
+  color: white;
+  font-family: 'Space Grotesk', sans-serif;
+  overflow: hidden;
+  touch-action: none;
+  font-size: calc(16px * var(--ui-scale));
+}
+
+canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 1 !important;
+}
+
+.epic-btn {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  padding: 12px 24px;
+  cursor: pointer;
+  letter-spacing: 3px;
+  font-family: 'Space Grotesk';
+  font-weight: 700;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  -webkit-backdrop-filter:blur(5px);
+  backdrop-filter: blur(5px);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: auto;
+  z-index: 10;
+  position: relative;
+}
+
+.epic-btn:hover {
+  background: white;
+  color: black;
+  box-shadow: 0 0 40px var(--primary);
+  transform: translateY(-2px);
+}
+
+.epic-btn.danger {
+  border-color: var(--danger);
+  color: var(--danger);
+}
+
+.epic-btn.danger:hover {
+  background: var(--danger);
+  color: white;
+  box-shadow: 0 0 40px var(--danger);
+}
+
+.epic-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+  border-color: #555;
+  background: transparent;
+  color: #555;
+  box-shadow: none;
+}
+
+.product-card {
+  position: relative;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 30px;
+  border-radius: 0px;
+  cursor: pointer;
+  transform-style: preserve-3d;
+  transition: border-color 0.3s;
+}
+
+.product-card:hover {
+  border-color: var(--primary);
+}
+
+@keyframes neon-flicker {
+  0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+    opacity: 1;
+    text-shadow: 0 0 5px var(--primary), 0 0 20px var(--primary);
+  }
+  20%, 24%, 55% {
+    opacity: 0.5;
+    text-shadow: none;
+  }
+}
+
+@keyframes glitch-skew {
+  0% { transform: skew(0deg); }
+  20% { transform: skew(-10deg); }
+  40% { transform: skew(10deg); }
+  60% { transform: skew(-5deg); }
+  80% { transform: skew(5deg); }
+  100% { transform: skew(0deg); }
+}
+
+@keyframes pulse {
+  0% { opacity: 0.5; }
+  50% { opacity: 1; }
+  100% { opacity: 0.5; }
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translate(-50%, 0); }
+  50% { transform: translate(-50%, 10px); }
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.cyber-logo:hover .suffix {
+  animation: glitch-skew 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both infinite;
+  color: white;
+  text-shadow: 2px 0 var(--danger), -2px 0 var(--primary);
+  -webkit-text-stroke: 0;
+}
+
+.overview-section.visible {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+
+@media (max-width: 768px) {
+  .side-panel { width: 100%; }
+  header nav { display: none; }
+  footer { flex-direction: column; gap: 10px; padding-bottom: 30px; }
+  .section-title { font-size: 2rem !important; }
+}
+
+input, textarea, select {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 15px;
+  margin-bottom: 20px;
+  color: white;
+  outline: none;
+  font-family: 'Space Grotesk';
+  transition: 0.3s;
+}
+
+input:focus, textarea:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 15px rgba(0, 242, 255, 0.1);
+}
+
+.subscription-badge {
+  background: var(--primary);
+  color: black;
+  font-weight: 900;
+  font-size: 0.7rem;
+  padding: 5px;
+  margin-bottom: 15px;
+  display: inline-block;
+}
+
+.feature-list {
+  list-style: none;
+  text-align: left;
+  margin: 20px 0;
+  color: #888;
+  font-size: 0.8rem;
+  font-family: 'Space Mono';
+}
+
+.feature-list li {
+  margin-bottom: 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  padding-bottom: 5px;
+}
+
+.feature-list li::before {
+  content: '> ';
+  color: var(--primary);
+}
+
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: #0a0a0a; }
+::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #00d4e0; }

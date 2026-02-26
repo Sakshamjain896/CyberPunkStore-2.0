@@ -1,0 +1,212 @@
+.epic-btn {
+  position: relative;
+  padding: 1rem 2.5rem;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  border: none;
+  background: transparent;
+  color: var(--primary);
+  cursor: pointer;
+  overflow: hidden;
+  transition: all var(--transition-normal);
+  clip-path: polygon(
+    0 0,
+    calc(100% - 15px) 0,
+    100% 15px,
+    100% 100%,
+    15px 100%,
+    0 calc(100% - 15px)
+  );
+}
+
+.epic-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  opacity: 0.1;
+  transition: opacity var(--transition-normal);
+  z-index: -1;
+}
+
+.epic-btn:hover::before {
+  opacity: 0.3;
+}
+
+.epic-btn__text {
+  position: relative;
+  z-index: 2;
+  display: block;
+}
+
+.epic-btn__glitch {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  z-index: 1;
+  color: var(--secondary);
+}
+
+.epic-btn__border {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 2px solid var(--primary);
+  clip-path: polygon(
+    0 0,
+    calc(100% - 15px) 0,
+    100% 15px,
+    100% 100%,
+    15px 100%,
+    0 calc(100% - 15px)
+  );
+  transition: all var(--transition-normal);
+}
+
+.epic-btn:hover .epic-btn__border {
+  box-shadow: 
+    0 0 20px var(--primary),
+    inset 0 0 20px rgba(0, 255, 255, 0.2);
+}
+
+/* Variants */
+.epic-btn--primary {
+  color: var(--primary);
+}
+
+.epic-btn--primary .epic-btn__border {
+  border-color: var(--primary);
+}
+
+.epic-btn--secondary {
+  color: var(--secondary);
+}
+
+.epic-btn--secondary .epic-btn__border {
+  border-color: var(--secondary);
+}
+
+.epic-btn--secondary:hover .epic-btn__border {
+  box-shadow: 
+    0 0 20px var(--secondary),
+    inset 0 0 20px rgba(255, 0, 255, 0.2);
+}
+
+.epic-btn--accent {
+  color: var(--accent);
+}
+
+.epic-btn--accent .epic-btn__border {
+  border-color: var(--accent);
+}
+
+.epic-btn--accent:hover .epic-btn__border {
+  box-shadow: 
+    0 0 20px var(--accent),
+    inset 0 0 20px rgba(255, 255, 0, 0.2);
+}
+
+.epic-btn--success {
+  color: var(--success);
+}
+
+.epic-btn--success .epic-btn__border {
+  border-color: var(--success);
+}
+
+.epic-btn--danger {
+  color: var(--danger);
+}
+
+.epic-btn--danger .epic-btn__border {
+  border-color: var(--danger);
+}
+
+/* Sizes */
+.epic-btn--small {
+  padding: 0.5rem 1.5rem;
+  font-size: 0.875rem;
+  letter-spacing: 1px;
+}
+
+.epic-btn--medium {
+  padding: 1rem 2.5rem;
+  font-size: 1rem;
+}
+
+.epic-btn--large {
+  padding: 1.25rem 3rem;
+  font-size: 1.125rem;
+}
+
+/* Glitch Effect */
+.epic-btn--glitch:hover .epic-btn__text {
+  animation: glitch 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+.epic-btn--glitch:hover .epic-btn__glitch {
+  opacity: 0.8;
+  animation: glitch-alt 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+@keyframes glitch-alt {
+  0%, 100% {
+    transform: translate(0);
+  }
+  33% {
+    transform: translate(2px, -2px);
+  }
+  66% {
+    transform: translate(-2px, 2px);
+  }
+}
+
+/* Disabled State */
+.epic-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* Active State */
+.epic-btn:active {
+  transform: scale(0.98);
+}
+
+/* Focus State */
+.epic-btn:focus {
+  outline: none;
+}
+
+.epic-btn:focus .epic-btn__border {
+  box-shadow: 
+    0 0 30px var(--primary),
+    inset 0 0 30px rgba(0, 255, 255, 0.3);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .epic-btn {
+    padding: 0.75rem 1.5rem;
+    font-size: 0.875rem;
+  }
+
+  .epic-btn--large {
+    padding: 1rem 2rem;
+    font-size: 1rem;
+  }
+}

@@ -1,0 +1,27 @@
+.layout {
+  min-height: 100vh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.layout__content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.layout__main {
+  flex: 1;
+  padding-top: 80px; /* Header height */
+  position: relative;
+  z-index: 1;
+}
+
+@media (max-width: 768px) {
+  .layout__main {
+    padding-top: 70px;
+  }
+}

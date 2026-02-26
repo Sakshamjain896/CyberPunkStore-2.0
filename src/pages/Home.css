@@ -1,0 +1,191 @@
+.home {
+  min-height: calc(100vh - 80px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.home__hero {
+  width: 100%;
+  max-width: 1400px;
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+.home__content {
+  position: relative;
+  z-index: 2;
+}
+
+.home__title {
+  margin-bottom: 1.5rem;
+  animation-fill-mode: both;
+}
+
+.home__subtitle {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 2rem;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  animation-fill-mode: both;
+}
+
+.home__description {
+  max-width: 700px;
+  margin: 0 auto 3rem;
+  font-size: clamp(1rem, 1.5vw, 1.25rem);
+  line-height: 1.8;
+  color: var(--text-secondary);
+  animation-fill-mode: both;
+}
+
+.home__cta {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 4rem;
+  animation-fill-mode: both;
+}
+
+/* Stats Section */
+.home__stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 3rem;
+  max-width: 800px;
+  margin: 0 auto;
+  animation-fill-mode: both;
+}
+
+.home__stat {
+  position: relative;
+  padding: 1.5rem;
+  background: rgba(0, 255, 255, 0.05);
+  border: 1px solid var(--primary);
+  clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
+  transition: var(--transition-normal);
+}
+
+.home__stat:hover {
+  background: rgba(0, 255, 255, 0.1);
+  box-shadow: 0 0 30px rgba(0, 255, 255, 0.3);
+  transform: translateY(-5px);
+}
+
+.home__stat-value {
+  font-family: 'Orbitron', sans-serif;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 900;
+  color: var(--primary);
+  text-shadow: 0 0 20px var(--primary);
+  margin-bottom: 0.5rem;
+}
+
+.home__stat-label {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--text-secondary);
+}
+
+/* Login Form Styles */
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.login-form__field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  text-align: left;
+}
+
+.login-form__label {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--primary);
+}
+
+.login-form__input {
+  padding: 1rem;
+  background: rgba(0, 255, 255, 0.05);
+  border: 2px solid var(--primary);
+  color: var(--text-primary);
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 1rem;
+  outline: none;
+  transition: var(--transition-fast);
+}
+
+.login-form__input:focus {
+  background: rgba(0, 255, 255, 0.1);
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+}
+
+.login-form__input::placeholder {
+  color: var(--text-muted);
+}
+
+.login-form__toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(0, 255, 255, 0.2);
+}
+
+.login-form__toggle-text {
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+}
+
+.login-form__toggle-btn {
+  background: transparent;
+  border: none;
+  color: var(--primary);
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: var(--transition-fast);
+  text-decoration: underline;
+}
+
+.login-form__toggle-btn:hover {
+  color: var(--secondary);
+  text-shadow: 0 0 10px var(--secondary);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .home__hero {
+    padding: 2rem 1rem;
+  }
+
+  .home__cta {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .home__cta button {
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .home__stats {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
